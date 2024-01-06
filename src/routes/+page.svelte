@@ -1,8 +1,10 @@
-<h1 class="text-3xl text-primary-500 font-bold underline">Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+</script>
+
+<h1 class="text-white">HOME</h1>
 
 <style lang="postcss">
 	:global(html) {
-		background-color: theme(colors.gray.400);
+		background-color: theme(colors.black);
 	}
 </style>

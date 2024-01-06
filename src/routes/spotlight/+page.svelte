@@ -2,4 +2,4 @@
 	import { page } from '$app/stores';
 </script>
 
-<pre>{JSON.stringify($page.data, null, 4)}</pre>
+<pre class="text-white">{JSON.stringify($page.data, null, 4)}</pre>
