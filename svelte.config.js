@@ -9,6 +9,12 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter()
 	},
-	preprocess: vitePreprocess()
+	preprocess: vitePreprocess(),
+	onwarn: (warning, handler) => {
+		// suppress warnings on `vite dev` and `vite build`;
+		// suppress svelte.preprocess warning about combining so many Bootstrap scss files
+		if (warning.code.includes('a11y')) return;
+		handler(warning);
+	}
 };
 export default config;

@@ -23,3 +23,15 @@ model songs {
   song_number Int?
   albums      albums? @relation(fields: [album], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
+
+model events {
+  id            Int       @id @default(autoincrement())
+  title         String?
+  art           String?
+  eventdate     DateTime? @db.Date
+  eventtime     DateTime? @db.Time(6)
+  eventlocation String?
+  eventaddress  String?
+  eventcity     String?
+  eventstate    String?
+}
