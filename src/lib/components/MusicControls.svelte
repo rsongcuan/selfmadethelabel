@@ -12,10 +12,13 @@
 	$: playActive = false;
 
 	let songsList = $page.data.songList.songs.map((song) => {
-		return { ...song, filepath: '/audio/' + song.filepath };
+		return { ...song, filepath: '/src/assets/audio/' + song.filepath };
 	});
 	let albumsList = $page.data.songList.albums.map((album) => {
-		return { ...album, art: album.art !== null ? '/images/albumArt/' + album.art : null };
+		return {
+			...album,
+			art: album.art !== null ? '/src/assets/images/albumArt/' + album.art : null
+		};
 	});
 
 	songsList.forEach((song) => {
@@ -81,7 +84,7 @@
 	}
 </script>
 
-<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} />
+<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} autoplay />
 
 <div class="flex flex-col">
 	<div class="flex flex-row justify-center mb-1">
@@ -89,7 +92,7 @@
 		<img
 			src={songsList[currentSongIndex].art !== null
 				? songsList[currentSongIndex].art
-				: '/images/albumArt/default.png'}
+				: '/src/assets/images/albumArt/default.png'}
 			alt={songsList[currentSongIndex].albumTitle}
 			class="h-10 mr-5"
 			on:click={() => (clickOutsideModal = true)}
@@ -121,7 +124,7 @@
 		<img
 			src={songsList[currentSongIndex].art !== null
 				? songsList[currentSongIndex].art
-				: '/images/albumArt/default.png'}
+				: '/src/assets/images/albumArt/default.png'}
 			alt={songsList[currentSongIndex].albumTitle}
 			class="h-60 mr-5"
 		/>

@@ -3,8 +3,8 @@
 	import { Tabs, TabItem } from 'flowbite-svelte';
 	import ImageCarousel from '$lib/components/ImageCarousel.svelte';
 
-	let albumPath = '/images/albumArt/';
-	let showsPath = '/images/shows/';
+	let albumPath = '/src/assets/images/albumArt/';
+	let showsPath = '/src/assets/images/shows/';
 
 	$: albumData = $page.data.albumArtList.body.map((image) => ({
 		alt: image.split('.')[0],

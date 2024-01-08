@@ -3,7 +3,7 @@ import path from 'path';
 import { json } from '@sveltejs/kit';
 
 export async function GET() {
-	const imagesDirectory = 'static/images/albumArt';
+	const imagesDirectory = 'src/assets/images/albumArt';
 	try {
 		const imageList = await fs.readdir(path.resolve(imagesDirectory));
 		return json({

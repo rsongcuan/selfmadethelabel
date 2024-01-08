@@ -5,8 +5,7 @@
 
 	export let data;
 	let store;
-
-	const allEvents = data?.eventsList?.events;
+	const allEvents = data?.eventsList?.events ?? [];
 	const { dark: theme } = themes;
 	const today = dayjs().format('MM/DD/YYYY');
 
@@ -40,7 +39,7 @@
 			</h1>
 			{#if eventScheduledToday}
 				{#if event.art !== null && event.art !== undefined}
-					<img src={'/images/events/' + event.art} alt="promo" title="promo" />
+					<img src={'/src/assets/images/events/' + event.art} alt="promo" title="promo" />
 				{/if}
 				<h3 class="text-primary-500">{event.title}</h3>
 				<h3 class="text-primary-500">{event.eventlocation}</h3>
