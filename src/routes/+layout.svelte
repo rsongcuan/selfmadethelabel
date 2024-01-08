@@ -5,7 +5,14 @@
 	import Particles, { particlesInit } from '@tsparticles/svelte';
 	import { loadFull } from 'tsparticles';
 	import ParticlesConfig from '$lib/components/config/particles-config.js';
-	// import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+
+	let ParticlesComponent;
+
+	onMount(async () => {
+		const module = await import('@tsparticles/svelte');
+		ParticlesComponent = module.default;
+	});
 
 	let onParticlesLoaded = (event) => {
 		const particlesContainer = event.detail.particles;
@@ -29,9 +36,17 @@
 	<slot />
 </div>
 <Footer />
-<Particles
+<!-- <Particles
 	id="tsparticles"
 	options={ParticlesConfig}
 	on:particlesLoaded={onParticlesLoaded}
 	{particlesInit}
+/> -->
+<svelte:component
+	this={ParticlesComponent}
+	id="tsparticles"
+	class="put your classes here"
+	style=""
+	options={ParticlesConfig}
+	on:particlesLoaded={onParticlesLoaded}
 />

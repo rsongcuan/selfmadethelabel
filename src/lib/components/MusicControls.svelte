@@ -9,7 +9,7 @@
 		ForwardStepSolid
 	} from 'flowbite-svelte-icons';
 
-	$: playActive = false;
+	$: playActive = true;
 
 	let songsList = $page.data.songList.songs.map((song) => {
 		return { ...song, filepath: '/src/assets/audio/' + song.filepath };
@@ -34,11 +34,11 @@
 	let audioElement;
 	let clickOutsideModal = false;
 
-	onMount(() => {
-		setTimeout(() => {
-			handlePlayPause();
-		}, 500);
-	});
+	// onMount(() => {
+	// 	setTimeout(() => {
+	// 		handlePlayPause();
+	// 	}, 500);
+	// });
 
 	function handlePlayPause() {
 		if (playActive === true) {
