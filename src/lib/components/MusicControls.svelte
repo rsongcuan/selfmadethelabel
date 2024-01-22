@@ -34,12 +34,12 @@
 	let audioElement;
 	let clickOutsideModal = false;
 
-	onMount(() => {
-		setTimeout(() => {
-			const playbutton = document.getElementById('playButton');
-			playbutton.click();
-		}, 500);
-	});
+	// onMount(() => {
+	// 	setTimeout(() => {
+	// 		const playbutton = document.getElementById('playButton');
+	// 		playbutton.click();
+	// 	}, 500);
+	// });
 
 	function handlePlayPause() {
 		if (playActive === true) {
