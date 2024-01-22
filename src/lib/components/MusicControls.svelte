@@ -9,7 +9,7 @@
 		ForwardStepSolid
 	} from 'flowbite-svelte-icons';
 
-	$: playActive = false;
+	$: playActive = true;
 
 	let songsList = $page.data.songList.songs.map((song) => {
 		return { ...song, filepath: `/audio/${song.filepath}` };
@@ -34,11 +34,11 @@
 	let audioElement;
 	let clickOutsideModal = false;
 
-	onMount(() => {
-		setTimeout(() => {
-			handlePlayPause();
-		}, 500);
-	});
+	// onMount(() => {
+	// 	setTimeout(() => {
+	// 		handlePlayPause();
+	// 	}, 500);
+	// });
 
 	function handlePlayPause() {
 		if (playActive === true) {
@@ -84,7 +84,7 @@
 	}
 </script>
 
-<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} />
+<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} autoplay />
 
 <div class="flex flex-col">
 	<div class="flex flex-row justify-center mb-1">
