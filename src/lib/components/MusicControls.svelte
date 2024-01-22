@@ -9,15 +9,15 @@
 		ForwardStepSolid
 	} from 'flowbite-svelte-icons';
 
-	$: playActive = true;
+	$: playActive = false;
 
 	let songsList = $page.data.songList.songs.map((song) => {
-		return { ...song, filepath: '/src/assets/audio/' + song.filepath };
+		return { ...song, filepath: `/audio/${song.filepath}` };
 	});
 	let albumsList = $page.data.songList.albums.map((album) => {
 		return {
 			...album,
-			art: album.art !== null ? '/src/assets/images/albumArt/' + album.art : null
+			art: album.art !== null ? `/images/albumArt/${album.art}` : null
 		};
 	});
 
@@ -34,11 +34,11 @@
 	let audioElement;
 	let clickOutsideModal = false;
 
-	// onMount(() => {
-	// 	setTimeout(() => {
-	// 		handlePlayPause();
-	// 	}, 500);
-	// });
+	onMount(() => {
+		setTimeout(() => {
+			handlePlayPause();
+		}, 500);
+	});
 
 	function handlePlayPause() {
 		if (playActive === true) {
@@ -84,7 +84,7 @@
 	}
 </script>
 
-<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} autoplay />
+<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} />
 
 <div class="flex flex-col">
 	<div class="flex flex-row justify-center mb-1">
@@ -92,7 +92,7 @@
 		<img
 			src={songsList[currentSongIndex].art !== null
 				? songsList[currentSongIndex].art
-				: '/src/assets/images/albumArt/default.png'}
+				: `/images/albumArt/default.png`}
 			alt={songsList[currentSongIndex].albumTitle}
 			class="h-10 mr-5"
 			on:click={() => (clickOutsideModal = true)}
@@ -124,7 +124,7 @@
 		<img
 			src={songsList[currentSongIndex].art !== null
 				? songsList[currentSongIndex].art
-				: '/src/assets/images/albumArt/default.png'}
+				: `/images/albumArt/default.png`}
 			alt={songsList[currentSongIndex].albumTitle}
 			class="h-60 mr-5"
 		/>

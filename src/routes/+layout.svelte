@@ -5,9 +5,19 @@
 	import Particles, { particlesInit } from '@tsparticles/svelte';
 	import { loadFull } from 'tsparticles';
 	import ParticlesConfig from '$lib/components/config/particles-config.js';
+	import { Svrollbar } from 'svrollbar';
 	import { onMount } from 'svelte';
 
 	let ParticlesComponent;
+
+	/**
+	 * @type {HTMLElement}
+	 */
+	export let viewport;
+	/**
+	 * @type {HTMLElement}
+	 */
+	export let contents;
 
 	onMount(async () => {
 		const module = await import('@tsparticles/svelte');
@@ -31,22 +41,35 @@
 	});
 </script>
 
-<Header />
-<div class="container mx-auto">
-	<slot />
+<div class="flex flex-col h-screen" id="wrapper">
+	<header>
+		<Header />
+	</header>
+	<!-- <div> -->
+	<main class="flex-1 overflow-y-auto viewport mx-auto" bind:this={viewport}>
+		<div bind:this={contents}>
+			<slot />
+		</div>
+	</main>
+	<!-- </div> -->
+	<footer>
+		<Footer />
+	</footer>
+	<Svrollbar {viewport} {contents} />
 </div>
-<Footer />
-<!-- <Particles
-	id="tsparticles"
-	options={ParticlesConfig}
-	on:particlesLoaded={onParticlesLoaded}
-	{particlesInit}
-/> -->
 <svelte:component
 	this={ParticlesComponent}
 	id="tsparticles"
-	class="put your classes here"
-	style=""
 	options={ParticlesConfig}
 	on:particlesLoaded={onParticlesLoaded}
 />
+
+<style>
+	.viewport::-webkit-scrollbar {
+		/* hide scrollbar */
+		display: none;
+	}
+	#wrapper {
+		--svrollbar-thumb-background: #54178b;
+	}
+</style>

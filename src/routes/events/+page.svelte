@@ -26,8 +26,8 @@
 	);
 </script>
 
-<div class="grid grid-cols-2">
-	<div>
+<div class="grid grid-cols-2 justify-items-center">
+	<div class="pb-40">
 		<InlineCalendar bind:store {theme} />
 	</div>
 	<div class="mx-auto">
@@ -39,7 +39,8 @@
 			</h1>
 			{#if eventScheduledToday}
 				{#if event.art !== null && event.art !== undefined}
-					<img src={'/src/assets/images/events/' + event.art} alt="promo" title="promo" />
+					{@const eventArt = `/images/events/${event.art}`}
+					<img src={eventArt} alt="promo" title="promo" />
 				{/if}
 				<h3 class="text-primary-500">{event.title}</h3>
 				<h3 class="text-primary-500">{event.eventlocation}</h3>

@@ -30,7 +30,7 @@
 		<Thumbnail
 			{...image}
 			{selected}
-			class="rounded-md shadow-xl hover:outline hover:outline-primary-500 h-32"
+			class="rounded-md shadow-xl hover:outline hover:outline-primary-500 h-20"
 			activeClass="outline outline-primary-400"
 		/>
 	</Thumbnails>

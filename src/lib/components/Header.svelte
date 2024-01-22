@@ -4,10 +4,10 @@
 	$: activeUrl = $page.url.pathname;
 </script>
 
-<Navbar color="black">
+<Navbar color="transparent" class="px-2 sm:px-4 pt-2.5 pb-0 w-full">
 	<NavBrand href="/">
 		<span class="self-center whitespace-nowrap text-xl font-semibold text-white">
-			Selfmade the Label Music
+			Self-Made the Label Music
 		</span>
 	</NavBrand>
 	<NavHamburger />
