@@ -9,7 +9,7 @@
 		ForwardStepSolid
 	} from 'flowbite-svelte-icons';
 
-	$: playActive = true;
+	$: playActive = false;
 
 	let songsList = $page.data.songList.songs.map((song) => {
 		return { ...song, filepath: `/audio/${song.filepath}` };
@@ -34,11 +34,12 @@
 	let audioElement;
 	let clickOutsideModal = false;
 
-	// onMount(() => {
-	// 	setTimeout(() => {
-	// 		handlePlayPause();
-	// 	}, 500);
-	// });
+	onMount(() => {
+		setTimeout(() => {
+			const playbutton = document.getElementById('playbutton');
+			playbutton.click();
+		}, 500);
+	});
 
 	function handlePlayPause() {
 		if (playActive === true) {
@@ -84,7 +85,7 @@
 	}
 </script>
 
-<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} autoplay />
+<audio src={songsList[currentSongIndex].filepath} bind:this={audioElement} />
 
 <div class="flex flex-col">
 	<div class="flex flex-row justify-center mb-1">
@@ -101,7 +102,7 @@
 			<Button outline on:click={prev}>
 				<BackwardStepSolid />
 			</Button>
-			<Button outline on:click={handlePlayPause}>
+			<Button outline on:click={handlePlayPause} id="playButton">
 				<svelte:component this={playActive === true ? PauseSolid : PlaySolid} />
 			</Button>
 			<Button outline on:click={next}>
