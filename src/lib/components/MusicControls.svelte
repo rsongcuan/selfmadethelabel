@@ -36,7 +36,7 @@
 
 	onMount(() => {
 		setTimeout(() => {
-			const playbutton = document.getElementById('playbutton');
+			const playbutton = document.getElementById('playButton');
 			playbutton.click();
 		}, 500);
 	});
