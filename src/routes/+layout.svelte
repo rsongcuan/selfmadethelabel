@@ -56,13 +56,14 @@
 		<Footer />
 	</footer>
 	<Svrollbar {viewport} {contents} />
-	<svelte:component
-		this={ParticlesComponent}
-		id="tsparticles"
-		options={ParticlesConfig}
-		on:particlesLoaded={onParticlesLoaded}
-	/>
 </div>
+
+<svelte:component
+	this={ParticlesComponent}
+	id="tsparticles"
+	options={ParticlesConfig}
+	on:particlesLoaded={onParticlesLoaded}
+/>
 
 <style>
 	.viewport::-webkit-scrollbar {
