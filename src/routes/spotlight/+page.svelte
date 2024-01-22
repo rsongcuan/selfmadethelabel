@@ -3,18 +3,18 @@
 	import { Tabs, TabItem } from 'flowbite-svelte';
 	import ImageCarousel from '$lib/components/ImageCarousel.svelte';
 
-	let albumPath = '/src/assets/images/albumArt/';
-	let showsPath = '/src/assets/images/shows/';
+	// let albumPath = 'assets/images/albumArt/';
+	// let showsPath = 'assets/images/shows/';
 
 	$: albumData = $page.data.albumArtList.body.map((image) => ({
 		alt: image.split('.')[0],
-		src: albumPath + image,
+		src: `/images/albumArt/${image}`,
 		title: image.split('.')[0]
 	}));
 
 	$: showsData = $page.data.showsList.body.map((image) => ({
 		alt: image.split('.')[0],
-		src: showsPath + image,
+		src: `/images/shows/${image}`,
 		title: image.split('.')[0]
 	}));
 </script>
@@ -22,7 +22,7 @@
 <!-- <div class="flex justify-center"> -->
 <Tabs
 	style="underline"
-	defaultClass="flex justify-center space-x-2 rtl:space-x-reverse"
+	defaultClass="flex justify-center space-x-2 rtl:space-x-reverse start-0 bottom-1"
 	contentClass="flex p-4 bg-black rounded-lg mt-4 justify-center"
 >
 	<TabItem open title="Shows">

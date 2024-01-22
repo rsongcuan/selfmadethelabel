@@ -1,7 +1,8 @@
-<div class="flex justify-center mt-12">
+<div class="flex justify-center">
 	<img
-		src="/src/assets/images/albumArt/launch_times_and_spaceships.png"
+		src="/images/albumArt/launch_times_and_spaceships.png"
 		alt="launch_times_and_spaceships"
+		class="object-scale-down"
 	/>
 </div>
 <div class="flex justify-center mt-5">

@@ -5,13 +5,13 @@
 	import MusicControls from './MusicControls.svelte';
 </script>
 
-<Footer class="absolute bottom-0 start-0 z-20 w-full bg-black" footerType="socialmedia">
+<Footer class="z-20 w-full bg-transparent" footerType="socialmedia">
 	<div class="flex justify-center">
 		<MusicControls />
 	</div>
 	<hr class=" border-gray-200 sm:mx-auto dark:border-gray-700" />
 	<div class="mb-1 sm:flex sm:items-center sm:justify-between">
-		<FooterCopyright href="/" by="Selfmade the Label" />
+		<FooterCopyright href="/" by="Self-Made the Label" />
 		<div class="flex mt-4 space-x-6 rtl:space-x-reverse sm:justify-center sm:mt-0">
 			<FooterIcon target="blank" href="https://www.facebook.com/profile.php?id=100062810091585">
 				<FacebookSolid
