@@ -6,7 +6,7 @@
 	import { loadFull } from 'tsparticles';
 	import ParticlesConfig from '$lib/components/config/particles-config.js';
 	import { Svrollbar } from 'svrollbar';
-	// import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	let ParticlesComponent;
 
@@ -19,10 +19,10 @@
 	 */
 	export let contents;
 
-	// onMount(async () => {
-	// 	const module = await import('@tsparticles/svelte');
-	// 	ParticlesComponent = module.default;
-	// });
+	onMount(async () => {
+		const module = await import('@tsparticles/svelte');
+		ParticlesComponent = module.default;
+	});
 
 	let onParticlesLoaded = (event) => {
 		const particlesContainer = event.detail.particles;
@@ -56,15 +56,15 @@
 		<Footer />
 	</footer>
 	<Svrollbar {viewport} {contents} />
+	<svelte:component
+		this={ParticlesComponent}
+		id="tsparticles"
+		class="put your classes here"
+		style=""
+		options={ParticlesConfig}
+		on:particlesLoaded={onParticlesLoaded}
+	/>
 </div>
-<svelte:component
-	this={Particles}
-	id="tsparticles"
-	class="put your classes here"
-	style=""
-	options={ParticlesConfig}
-	on:particlesLoaded={onParticlesLoaded}
-/>
 
 <style>
 	.viewport::-webkit-scrollbar {
