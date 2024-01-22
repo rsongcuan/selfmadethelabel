@@ -60,6 +60,8 @@
 <svelte:component
 	this={ParticlesComponent}
 	id="tsparticles"
+	class="put your classes here"
+	style=""
 	options={ParticlesConfig}
 	on:particlesLoaded={onParticlesLoaded}
 />
