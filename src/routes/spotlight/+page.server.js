@@ -1,21 +1,18 @@
-import fs from 'fs/promises';
-import { json } from '@sveltejs/kit';
-
-export async function load() {
+export async function load({ fetch }) {
 	try {
-		console.log(await fs.readdir('public'));
-		const albumArtList = await fs.readdir('public/images/albumArt');
-		const showsList = await fs.readdir('public/images/shows');
-		console.log(albumArtList, showsList);
+		const images = await fetch('/api/getImages');
+		let allImages = await images.json();
+		let albumArtList = allImages.images
+			.filter((image) => image.imagetype === 'albumArt')
+			.map((image) => image.filename);
+		let showsList = allImages.images
+			.filter((image) => ['shows', 'events'].includes(image.imagetype))
+			.map((image) => image.filename);
 		return {
 			albumArtList,
 			showsList
 		};
 	} catch (error) {
-		console.error('Error reading image files:', error);
-		return {
-			status: 500,
-			body: { error: 'Internal Server Error' }
-		};
+		console.error('Error retrieving images for this page');
 	}
 }

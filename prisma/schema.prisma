@@ -35,3 +35,9 @@ model events {
   eventcity     String?
   eventstate    String?
 }
+
+model images {
+  id        Int     @id @default(autoincrement())
+  imagetype String
+  filename  String?
+}
