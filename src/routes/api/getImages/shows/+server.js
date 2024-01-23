@@ -1,10 +1,11 @@
 import fs from 'fs/promises';
+import path from 'path';
 import { json } from '@sveltejs/kit';
 
 export async function GET() {
 	const imagesDirectory = 'images/shows';
 	try {
-		const imageList = await fs.readdir(imagesDirectory);
+		const imageList = await fs.readdir(path.resolve(imagesDirectory));
 		return json({
 			body: imageList
 		});
