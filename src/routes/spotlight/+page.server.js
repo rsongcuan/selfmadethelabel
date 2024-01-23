@@ -3,8 +3,8 @@ import { json } from '@sveltejs/kit';
 
 export async function load() {
 	try {
-		const albumArtList = await fs.readdir('public/images/albumArt');
-		const showsList = await fs.readdir('public/images/shows');
+		const albumArtList = await fs.readdir('/images/albumArt');
+		const showsList = await fs.readdir('/images/shows');
 		return {
 			albumArtList,
 			showsList
