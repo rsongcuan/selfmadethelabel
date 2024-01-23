@@ -1,9 +1,13 @@
 export async function load({ fetch }) {
 	try {
-		const albumArt = await fetch('/api/getImages/albumArt');
-		let albumArtList = await albumArt.json();
-		const shows = await fetch('/api/getImages/shows');
-		let showsList = await shows.json();
+		const images = await fetch('/api/getImages');
+		let allImages = await images.json();
+		let albumArtList = allImages.images
+			.filter((image) => image.imagetype === 'albumArt')
+			.map((image) => image.filename);
+		let showsList = allImages.images
+			.filter((image) => ['shows', 'events'].includes(image.imagetype))
+			.map((image) => image.filename);
 		return {
 			albumArtList,
 			showsList

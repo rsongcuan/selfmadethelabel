@@ -2,7 +2,7 @@
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import Particles, { particlesInit } from '@tsparticles/svelte';
+	import { particlesInit } from '@tsparticles/svelte';
 	import { loadFull } from 'tsparticles';
 	import ParticlesConfig from '$lib/components/config/particles-config.js';
 	import { Svrollbar } from 'svrollbar';
@@ -57,6 +57,7 @@
 	</footer>
 	<Svrollbar {viewport} {contents} />
 </div>
+
 <svelte:component
 	this={ParticlesComponent}
 	id="tsparticles"

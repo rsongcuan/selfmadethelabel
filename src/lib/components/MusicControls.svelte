@@ -34,11 +34,12 @@
 	let audioElement;
 	let clickOutsideModal = false;
 
-	onMount(() => {
-		setTimeout(() => {
-			handlePlayPause();
-		}, 500);
-	});
+	// onMount(() => {
+	// 	setTimeout(() => {
+	// 		const playbutton = document.getElementById('playButton');
+	// 		playbutton.click();
+	// 	}, 500);
+	// });
 
 	function handlePlayPause() {
 		if (playActive === true) {
@@ -101,7 +102,7 @@
 			<Button outline on:click={prev}>
 				<BackwardStepSolid />
 			</Button>
-			<Button outline on:click={handlePlayPause}>
+			<Button outline on:click={handlePlayPause} id="playButton">
 				<svelte:component this={playActive === true ? PauseSolid : PlaySolid} />
 			</Button>
 			<Button outline on:click={next}>
