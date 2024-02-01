@@ -3,10 +3,9 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	$: videoPlaying = false;
+	$: videoPlaying = true;
 
 	onMount(() => {
-		videoPlaying = true;
 		setTimeout(() => {
 			videoPlaying = false;
 		}, 8000);
