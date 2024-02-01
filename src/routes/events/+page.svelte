@@ -5,7 +5,8 @@
 
 	export let data;
 	let store;
-	const allEvents = data?.eventsList?.events ?? [];
+	const allEvents =
+		data?.eventsList?.events?.sort((a, b) => new Date(a.eventdate) - new Date(b.eventdate)) ?? [];
 	const { dark: theme } = themes;
 	const today = dayjs().format('MM/DD/YYYY');
 
@@ -42,7 +43,9 @@
 					{@const eventArt = `/images/events/${event.art}`}
 					<img src={eventArt} alt="promo" title="promo" />
 				{/if}
-				<h3 class="text-primary-500">{event.title}</h3>
+				{#if event.title !== null}
+					<h3 class="text-primary-500">{event.title}</h3>
+				{/if}
 				<h3 class="text-primary-500">{event.eventlocation}</h3>
 				<h3 class="text-primary-500">{event.eventaddress}</h3>
 				<h3 class="text-primary-500">{event.eventcity}, {event.eventstate}</h3>
@@ -55,16 +58,21 @@
 				<h1 class="text-primary-500 text-4xl text-center mb-2">Upcoming Events</h1>
 				<hr />
 				{#if allEvents.length > 0 && upcomingEventsScheduled}
-					{#each allEvents as futureEvent}
+					{#each allEvents as futureEvent, i}
 						{@const eventDate = dayjs(futureEvent.eventdate.split('T')[0]).format('MM/DD/YYYY')}
 						{#if eventDate > today}
 							<h2 class="text-primary-500 mt-2">
 								{eventDate}
 							</h2>
-							<h3 class="text-primary-500">{futureEvent.title}</h3>
+							{#if futureEvent.title !== null}
+								<h3 class="text-primary-500">{futureEvent.title}</h3>
+							{/if}
 							<h3 class="text-primary-500">{futureEvent.eventlocation}</h3>
 							<h3 class="text-primary-500">{futureEvent.eventaddress}</h3>
 							<h3 class="text-primary-500">{futureEvent.eventcity}, {futureEvent.eventstate}</h3>
+						{/if}
+						{#if i < allEvents.length - 1}
+							<hr />
 						{/if}
 					{/each}
 				{:else}
