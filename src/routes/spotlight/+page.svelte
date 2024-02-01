@@ -11,7 +11,7 @@
 
 	$: showsData = $page.data.showsList.map((image) => ({
 		alt: image.split('.')[0],
-		src: `/images/${['010624.JPG', '021624.jpg'].includes(image) ? 'events' : 'shows'}/${image}`,
+		src: `/images/${['010624.JPG', '021624.jpg', '041824.JPG'].includes(image) ? 'events' : 'shows'}/${image}`,
 		title: image.split('.')[0]
 	}));
 </script>
